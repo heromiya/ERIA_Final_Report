@@ -1,0 +1,130 @@
+\documentclass[10.5pt,listof=totoc]{report}  
+
+\usepackage{chngcntr}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[a4paper,left=30mm,right=30mm,top=30mm,bottom=30mm]{geometry}
+\usepackage{etoolbox}
+\usepackage[english]{babel}
+\usepackage{array}
+\usepackage{epigraph}
+\usepackage{csquotes}
+\usepackage{caption} 
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{xcolor,colortbl}
+\usepackage{gensymb}
+\usepackage{stmaryrd}
+\usepackage{tcolorbox}
+\usepackage{url}
+\usepackage{adjustbox}
+\usepackage{CJK}
+\usepackage{lipsum}
+
+\setcounter{secnumdepth}{3} % default value for 'report' class is "2"
+\setcounter{tocdepth}{3}
+
+% space between captions and tables
+\captionsetup[table]{skip=10pt}
+
+% double space paragraphs but not titles
+\makeatletter
+\pretocmd{\@chapter}{\singlespacing}{}{}
+\pretocmd{\@sect}{\singlespacing}{}{}
+\pretocmd{\@ssect}{\singlespacing}{}{}
+\apptocmd{\@chapter}{\onehalfspacing}{}{}
+\apptocmd{\@sect}{\onehalfspacing}{}{}
+\apptocmd{\@ssect}{\onehalfspacing}{}{}
+\makeatother
+\onehalfspacing
+
+% Define \tab
+\newcommand\tab[1][6mm]{\hspace*{#1}}
+
+% Change name "Contents" to "Table of Contents"
+\addto\captionsenglish{\renewcommand{\contentsname}{Table of Contents}}
+
+
+\begin{document}
+\begin{CJK}{UTF8}{min}
+
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.4\linewidth]{Figures/eria.jpg}\par
+	\vspace{5 cm}
+	{\scshape\large Research Project Report\par}
+	\vspace{0.4cm}
+	{\LARGE \bfseries Integrated Space-based/Geospatial System to strengthen the Resilience and Connectivity of ASEAN\par}
+	\vspace{3 cm}
+	{\scshape\large Edited by\par}
+	\vspace{0.4cm}
+	{\large Prof.~Ryosuke \textsc{Shibasaki}, Prof.~Takayoshi \textsc{Fukuyo},\par}
+	{\large Prof.~Hiroyuki \textsc{Miyazaki} and Mr.~Quentin \textsc{Verspieren}\par}
+	\vspace{0.2cm}
+	{\large \itshape The University of Tokyo\par}
+	\vfill
+	{\large October, 2017\par}
+\end{titlepage}
+
+
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+\pagenumbering{roman}
+
+\cleardoublepage
+% \phantomsection
+\addcontentsline{toc}{chapter}{Foreword}
+\include{foreword}
+
+\cleardoublepage
+% \phantomsection
+\addcontentsline{toc}{chapter}{Project Members}
+\include{proj_members}
+
+\cleardoublepage
+% \phantomsection
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\include{acknowledgements}
+
+\addcontentsline{toc}{chapter}{Table of Contents}
+\tableofcontents
+
+\cleardoublepage
+% \phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+\cleardoublepage
+% \phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+
+\include{abbreviations}
+
+\pagenumbering{arabic}
+\addcontentsline{toc}{chapter}{Executive Summary}
+\include{exec_summary}
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\addcontentsline{toc}{chapter}{Conclusion}
+\include{conclusion}
+
+\appendix
+\include{appendix1}
+\include{appendix2}
+\include{appendix3}
+
+\singlespacing
+%next line adds the Bibliography to the contents page
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{biblio} %use a bibtex bibliography file
+\bibliographystyle{plain}  %use the plain bibliography style
+
+
+\end{CJK}
+\end{document}
+
